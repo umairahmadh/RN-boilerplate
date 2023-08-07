@@ -82,7 +82,32 @@ export class Api {
     }
   }
   // @demo remove-block-end
+
+  //Login API
+  async login(email: string, password: string): Promise<{ kind: "ok"; authToken: string } | GeneralApiProblem> {
+    // Make the API call to the server to log in with the provided email and password
+    const response: ApiResponse<any> = await this.apisauce.post("/login", {
+      email,
+      password,
+    });
+
+    // Check if the API response is successful (status code 200)
+    // Check if the API response is successful (status code 200)
+    if (response.ok) {
+      const authToken  = response.data.token; // Assuming the server returns the token as `authToken`
+      console.log(response.data.token);
+      return { kind: "ok", authToken };
+    } else {
+      // If the API response is not successful, handle the error based on the status code or response data.
+      return getGeneralApiProblem(response);
+    }
+  }
+
 }
+
+
+
+
 
 // Singleton instance of the API for convenience
 export const api = new Api()

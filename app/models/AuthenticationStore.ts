@@ -21,6 +21,7 @@ export const AuthenticationStoreModel = types
   .actions((store) => ({
     setAuthToken(value?: string) {
       store.authToken = value
+      console.log(value)
     },
     setAuthEmail(value: string) {
       store.authEmail = value.replace(/ /g, "")

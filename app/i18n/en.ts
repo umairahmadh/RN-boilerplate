@@ -4,6 +4,7 @@ const en = {
     cancel: "Cancel",
     back: "Back",
     logOut: "Log Out", // @demo remove-current-line
+    empty: ""
   },
   welcomeScreen: {
     postscript:
@@ -29,6 +30,7 @@ const en = {
   // @demo remove-block-start
   errors: {
     invalidEmail: "Invalid email address.",
+    
   },
   loginScreen: {
     signIn: "Sign In",
@@ -40,8 +42,17 @@ const en = {
     passwordFieldPlaceholder: "Super secret password here",
     tapToSignIn: "Tap to sign in!",
     hint: "Hint: you can use any email address and your favorite password :)",
+    errors: {
+      invalidCredentials: "Invalid email or password.",
+      serverError: "Server error. Please try again later.",
+      unknownError: "Unknown error occurred. Please try again.",
+    },
   },
   demoNavigator: {
+    registerScreenTab: "Register",
+    manualsScreenTab: "Manuals",
+    faultCodesScreenTab: "Fault Codes",
+    guidesScreenTab: "Guides",
     componentsTab: "Components",
     debugTab: "Debug",
     communityTab: "Community",

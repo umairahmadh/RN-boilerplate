@@ -13,8 +13,14 @@ import { AppStackParamList, AppStackScreenProps } from "./AppNavigator"
 export type DemoTabParamList = {
   DemoCommunity: undefined
   DemoShowroom: { queryIndex?: string; itemIndex?: string }
+  
   DemoDebug: undefined
   DemoPodcastList: undefined
+
+  NavBarRegister: { queryIndex?: string; itemIndex?: string }
+  NavBarManuals: { queryIndex?: string; itemIndex?: string }
+  NavBarFaultCodes: { queryIndex?: string; itemIndex?: string }
+  NavBarGuides: { queryIndex?: string; itemIndex?: string }
 }
 
 /**
@@ -44,50 +50,62 @@ export function DemoNavigator() {
         tabBarItemStyle: $tabBarItem,
       }}
     >
+      {/* Screens needed: Register, Manuals, Fault Codes, Guides 
+          registerScreenTab: "Register",
+    manualsScreenTab: "Manuals",
+    faultCodesScreenTab: "Fault Codes",
+    guidesScreenTab: "Guides",
+
+     NavBarRegister: { queryIndex?: string; itemIndex?: string }
+  NavBarManuals: { queryIndex?: string; itemIndex?: string }
+  NavBarFaultCodes: { queryIndex?: string; itemIndex?: string }
+  NavBarGuides: { queryIndex?: string; itemIndex?: string }
+    */}
+
       <Tab.Screen
-        name="DemoShowroom"
+        name="NavBarRegister"
         component={DemoShowroomScreen}
         options={{
-          tabBarLabel: translate("demoNavigator.componentsTab"),
+          tabBarLabel: translate("demoNavigator.registerScreenTab"),
           tabBarIcon: ({ focused }) => (
-            <Icon icon="components" color={focused && colors.tint} size={30} />
+            <Icon icon="register" color={focused && colors.palette.angry500 || !focused&& colors.palette.neutral500} size={30} />
           ),
         }}
       />
 
       <Tab.Screen
-        name="DemoCommunity"
-        component={DemoCommunityScreen}
-        options={{
-          tabBarLabel: translate("demoNavigator.communityTab"),
-          tabBarIcon: ({ focused }) => (
-            <Icon icon="community" color={focused && colors.tint} size={30} />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="DemoPodcastList"
-        component={DemoPodcastListScreen}
-        options={{
-          tabBarAccessibilityLabel: translate("demoNavigator.podcastListTab"),
-          tabBarLabel: translate("demoNavigator.podcastListTab"),
-          tabBarIcon: ({ focused }) => (
-            <Icon icon="podcast" color={focused && colors.tint} size={30} />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="DemoDebug"
+        name="NavBarManuals"
         component={DemoDebugScreen}
         options={{
-          tabBarLabel: translate("demoNavigator.debugTab"),
+          tabBarLabel: translate("demoNavigator.manualsScreenTab"),
           tabBarIcon: ({ focused }) => (
-            <Icon icon="debug" color={focused && colors.tint} size={30} />
+            <Icon icon="manual" color={focused && colors.palette.angry500 || !focused&& colors.palette.neutral500} size={30} />
           ),
         }}
       />
+
+      <Tab.Screen
+        name="NavBarFaultCodes"
+        component={DemoCommunityScreen}
+        options={{
+          tabBarLabel: translate("demoNavigator.faultCodesScreenTab"),
+          tabBarIcon: ({ focused }) => (
+            <Icon icon="fault" color={focused && colors.palette.angry500 || !focused&& colors.palette.neutral500} size={30} />
+          ),
+        }}
+      />     
+
+      <Tab.Screen
+        name="NavBarGuides"
+        component={DemoPodcastListScreen}
+        options={{
+          tabBarLabel: translate("demoNavigator.guidesScreenTab"),
+          tabBarIcon: ({ focused }) => (
+            <Icon icon="guides" color={focused && colors.palette.angry500 || !focused&& colors.palette.neutral500} size={30} />
+          ),
+        }}
+      />  
+
     </Tab.Navigator>
   )
 }
